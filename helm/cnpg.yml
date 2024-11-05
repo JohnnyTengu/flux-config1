@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: cloudnative-pg
+  namespace: flux-system
+spec:
+  targetNamespace: cloudnative-pg
+  interval: 24h
+  timeout: 10m
+  releaseName: cloudnative-pg
+  chart:
+    spec:
+      sourceRef:
+        kind: HelmRepository
+        name: cnpg
+        namespace: flux-system
+      chart: cloudnative-pg
+      version: 0.20.1
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
