@@ -98,4 +98,4 @@ metadata:
 spec:
   interval: 5m
   type: "oci"
-  url: oci://cr.yandex/yc-marketplace/yandex-cloud/vault/chart/vault
+  url: oci://cr.yandex/yc-marketplace/yandex-cloud/vault/chart
