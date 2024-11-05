@@ -89,3 +89,13 @@ metadata:
 spec:
   interval: 5m
   url: https://fluent.github.io/helm-charts
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: yandex-vault
+  namespace: flux-system
+spec:
+  interval: 5m
+  type: "oci"
+  url: oci://cr.yandex/yc-marketplace/yandex-cloud/vault/chart/vault
