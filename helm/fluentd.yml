@@ -23,28 +23,18 @@ spec:
     remediation:
       retries: 3
   values:
+    serviceAccount:
+      create: true
+      name: fluent-bit
     config:
       outputs: |
         [OUTPUT]
             Name es
-            Match kube.*
+            Match "*"
+            Type elasticsearch
             Host elk-elasticsearch
             Port 9200
             Logstash_Format On
-            Retry_Limit False
-            tls Off
-            tls.verify Off
-            HTTP_User admin
-            HTTP_Passwd admin
-            Suppress_Type_Name On
-    
-        [OUTPUT]
-            Name es
-            Match host.*
-            Host elk-elasticsearch
-            Port 9200
-            Logstash_Format On
-            Logstash_Prefix node
             Retry_Limit False
             tls Off
             tls.verify Off
