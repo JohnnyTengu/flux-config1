@@ -15,6 +15,7 @@ spec:
         name: prometheus-community
         namespace: flux-system
       chart: kube-prometheus-stack
+      version: 65.2.0
   install:
     createNamespace: true
     remediation:
