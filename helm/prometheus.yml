@@ -6,7 +6,7 @@ metadata:
 spec:
   targetNamespace: prometheus
   interval: 24h
-  timeout: 2m
+  timeout: 10m
   releaseName: prometheus
   chart:
     spec:
