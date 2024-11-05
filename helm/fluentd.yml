@@ -32,7 +32,7 @@ spec:
             Port 9200
             Logstash_Format On
             Retry_Limit False
-            tls On
+            tls Off
             tls.verify Off
             HTTP_User admin
             HTTP_Passwd admin
@@ -46,7 +46,7 @@ spec:
             Logstash_Format On
             Logstash_Prefix node
             Retry_Limit False
-            tls On
+            tls Off
             tls.verify Off
             HTTP_User admin
             HTTP_Passwd admin
