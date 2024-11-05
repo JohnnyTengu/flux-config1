@@ -28,6 +28,7 @@ spec:
             Name es
             Match kube.*
             Host elk-elasticsearch
+            Port 9200
             Logstash_Format On
             Retry_Limit False
             tls On
@@ -40,6 +41,7 @@ spec:
             Name es
             Match host.*
             Host elk-elasticsearch
+            Port 9200
             Logstash_Format On
             Logstash_Prefix node
             Retry_Limit False
