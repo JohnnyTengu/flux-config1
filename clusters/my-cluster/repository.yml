@@ -108,3 +108,4 @@ metadata:
 spec:
   interval: 5m
   url: https://github.com/JohnnyTengu/helm-app
+  branch: main
