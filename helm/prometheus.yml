@@ -39,7 +39,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - grafana.k8s.example.com
+          - grafana.example.com
         paths:
           - /
       sidecar:
