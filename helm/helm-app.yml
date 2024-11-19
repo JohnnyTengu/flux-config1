@@ -1,0 +1,50 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: helm-app
+  namespace: flux-system
+spec:
+  targetNamespace: default
+  interval: 24h
+  timeout: 10m
+  releaseName: helm-app
+  chart:
+    spec:
+      sourceRef:
+        kind: GitRepository
+        name: helm-app
+        namespace: flux-system
+      chart: helm-app
+      version: 1.0.0
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    podAnnotations:
+      vault.security.banzaicloud.io/vault-addr: "http://vault.vault.svc.cluster.local:8200"
+      vault.security.banzaicloud.io/vault-role: "helm-app-helm-app"
+      vault.security.banzaicloud.io/vault-skip-verify: "true"
+      vault.security.banzaicloud.io/vault-agent: "false"
+      vault.security.banzaicloud.io/vault-path: "kubernetes"
+    env1: vault:secret/data/webapp/config:#username
+    env2: vault:secret/data/webapp/config:#password
+    autoscaling:
+      enabled: true
+      targetRequestPerSecond: 10
+    ingresses:
+      enabled: true
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: "vault-issuer"
+      hosts:
+        - host: chart-example.example.com
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: chart-tls
+          hosts:
+            - chart-example.example.com
